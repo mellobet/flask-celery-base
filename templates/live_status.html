@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="2">
-  <title>Live Status for {{ ctx.t_id }}</title>
-</head>
-<body>
-<h4>ID: {{ ctx.t_id }}</h4>
-<h4>Status: {{ ctx.state }}</h4>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block meta %}<meta http-equiv="refresh" content="3">{% endblock %}
+
+{% block title %}Live Status for {{ ctx.t_id }}{% endblock %}
+
+{% block content %}
+    <h4>ID: {{ ctx.t_id }}</h4>
+    <h4>Status: {{ ctx.state }}</h4>
+{% endblock %}

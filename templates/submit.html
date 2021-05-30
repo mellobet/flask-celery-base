@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Submit tasks</title>
-</head>
-<body>
-<h1>Task submitted</h1>
-<a href="/task-status/{{ ctx.t_id }}" target="_blank">Get Status: {{ ctx.t_id }}</a>
-<hr>
-<button onclick="window.location.reload()">Submit another</button>
-<hr>
-<a href="/inspect" target="_blank">Inspect</a>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %}Submit tasks{% endblock %}
+
+{% block content %}
+  <h1>Task submitted</h1>
+  <a href="/task-status/{{ ctx.t_id }}" target="_blank">Get Status: {{ ctx.t_id }}</a>
+  <hr>
+  <button onclick="window.location.reload()">Submit another</button>
+  <hr>
+  <a href="/inspect" target="_blank">Inspect</a>
+{% endblock %}
