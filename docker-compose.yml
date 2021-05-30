@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+
+  redis:
+    image: redis:6.2.3-alpine
+    ports:
+      - "6379:6379"
+
+  celery:
+    build: 
+      context: .
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    command: [sh, -c, "celery -A my_app.celery worker --loglevel=INFO"]
+
+  app:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    depends_on: 
+      - celery
+    ports:
+      - "5000:5000"
+    environment: 
+      - FLASK_APP=my_app.py
+      - FLASK_ENV=development
+    command: [sh, -c, "python -m flask run --host=0.0.0.0"]
